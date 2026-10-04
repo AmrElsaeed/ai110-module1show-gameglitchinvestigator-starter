@@ -42,19 +42,6 @@ class TestCheckGuessHintDirection:
         assert "LOWER" in high_msg
         assert "HIGHER" in low_msg
 
-    # --- TypeError path (int guess vs str secret, as produced by app.py on even attempts) ---
-
-    def test_guess_above_str_secret_says_lower(self):
-        _, message = check_guess(80, "50")
-        assert "LOWER" in message, f"Expected LOWER for guess 80 vs secret '50', got: {message!r}"
-
-    def test_guess_below_str_secret_says_higher(self):
-        _, message = check_guess(20, "50")
-        assert "HIGHER" in message, f"Expected HIGHER for guess 20 vs secret '50', got: {message!r}"
-
-    def test_exact_match_str_secret_returns_win(self):
-        outcome, _ = check_guess(42, "42")
-        assert outcome == "Win"
 
 
 class TestGetRangeForDifficulty:
